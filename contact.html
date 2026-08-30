@@ -5,46 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | KudiTech </title>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .navbar {
+    background: #070D0A;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: auto;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.logo span {
+    color: #22c55e;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: auto;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #9ca3af;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #22c55e;
+}
+
+.nav-links .active {
+    color: #22c55e;
+    font-weight: bold;
+    border-bottom: 2px solid #22c55e;
+    padding-bottom: 8px;
+}
+
+
+/* Hamburger */
+
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-button img {
+    width: 32px;
+    height: 32px;
+}
+
+
+/* Mobile Menu */
+
+.mobile-menu {
+    display: none;
+    list-style: none;
+    padding: 20px 24px;
+    margin: 0;
+}
+
+.mobile-menu li {
+    margin-bottom: 20px;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    color: #9ca3af;
+    font-size: 17px;
+}
+
+.mobile-menu .active {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+
+/* Phone Screen */
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+        margin-left: auto;
+    }
+
+    .mobile-menu.show {
+        display: block;
+    }
+
+}
+    </style>
 </head>
 <body class="bg-[#070D0A] text-white">
 
-    <!-- navbar -->
+    <!-- Navbar -->
+<header class="navbar">
 
-    <header class="border-b border-white/10 bg-[#070D0A]/95">
+    <nav class="nav-container">
 
-        <nav class="max-w-7xl mx-auto px-6 py-5 flex items-center">
+        <!-- Logo -->
+        <a href="index.html" class="logo">
+            Kudi<span>Tech</span>
+        </a>
 
-            <!-- Logo -->
+        <!-- Desktop Navigation -->
+        <ul class="nav-links">
 
-            <a href="index.html" class="text-2xl font-bold tracking-tight"> Kudi<span class="text-green-500">Tech</span> </a>
+            <li><a href="index.html">Home</a></li>
 
-            <!-- Navigation -->
+            <li><a href="about.html">About</a></li>
 
-            <ul class="hidden md:flex items-center gap-8 ml-auto mr-auto">
+            <li><a href="services.html">Services</a></li>
 
-                <li>
-                    <a href="index.html" class="text-gray-400 hover:text-green-500 transition"> Home </a>
-                </li>
+            <li><a href="portfolio.html">Portfolio</a></li>
 
-                <li>
-                    <a href="about.html" class="text-gray-400 hover:text-green-500 transition"> About</a>
-                </li>
+            <li><a href="contact.html" class="active">Contact</a></li>
 
-                <li>
-                    <a href="services.html" class="text-gray-400 hover:text-green-500 transition"> Services </a>
-                </li>
+        </ul>
 
-                <li>
-                    <a href="portfolio.html" class="text-gray-400 hover:text-green-500 transition"> Portfolio </a>
-                </li>
+        <!-- Hamburger Button -->
+        <button id="menuButton" class="menu-button">
+            <img src="image/icons8-hamburger-50.png" alt="Menu">
+        </button>
 
-                <li>
-                    <a href="contact.html" class="text-green-400 font-semibold border-b-2 border-green-500 pb-2"> Contact </a>
-                </li>
+    </nav>
 
-            </ul>
+    <!-- Mobile Navigation -->
+    <ul id="mobileMenu" class="mobile-menu">
 
-        </nav>
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="about.html">About</a></li>
+
+        <li><a href="services.html">Services</a></li>
+
+        <li><a href="portfolio.html">Portfolio</a></li>
+
+        <li><a href="contact.html" class="active">Contact</a></li>
+
+    </ul>
+
 
     </header>
 
@@ -102,11 +222,10 @@
                     <div class="bg-[#101A15] border border-white/10 rounded-2xl p-7 sm:p-10">
 
 
-                        <form action="https://formsubmit.co/iamchukwudum2001@gmail.com"method="POST"class="space-y-6">
+                        <form id="contactForm" action="https://formsubmit.co/iamchukwudum2001@gmail.com" method="POST" class="space-y-6">
 
                             <input type="hidden" name="_subject" value="New message from KudiTech Website">
-                            <input type="hidden" name="_next" value="false">
-                            <input type="hidden" name="_next" value="https://https://my-portfolio-six-sooty-39.vercel.app/thank-you.html">
+                            <input type="hidden" name="_captcha" value="false">
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
@@ -141,7 +260,8 @@
                                 <textarea name="message" rows="7" required placeholder="Tell me a little about what you have in mind..." class="w-full bg-[#070D0A] border border-white/10 rounded-lg px-4 py-3 outline-none text-white resize-none focus:border-green-500 transition"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full bg-green-500 text-black font-semibold py-4 rounded-lg hover:bg-green-400 hover:-translate-y-1 transition duration-300"> Send enquiry </button>
+                            <button id="submitButton" type="submit" class="w-full bg-green-500 text-black font-semibold py-4 rounded-lg hover:bg-green-400 hover:-translate-y-1 transition duration-300">Send enquiry</button>
+                            <p id="formMessage" class="text-green-500 text-center hidden"> Thank you! Your message has been sent successfully.</p>
 
                         </form>
 
@@ -179,7 +299,7 @@
                     </li>
 
                     <li>
-                        <a href="about.html" class="text-gray-400 hover:text-green-500 transition"></a> About </a>
+                        <a href="about.html" class="text-gray-400 hover:text-green-500 transition"> About </a>
                     </li>
 
                     <li>
@@ -220,13 +340,72 @@
 
         <div
             class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-
             <p class="text-gray-500 text-sm"> Designed and built by <strong class="text-green-500"> Okeke Chukwudi (KudiTech) </strong> </p>
             <p class="text-gray-500 text-sm"> © 2026 KudiTech. All rights reserved. </p>
         
         </div>
 
+        <script>
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuButton.addEventListener("click", function () {
+    mobileMenu.classList.toggle("show");
+    });
+    const form = document.getElementById("contactForm");
+    const formMessage = document.getElementById("formMessage");
+    const submitButton = document.getElementById("submitButton");
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        submitButton.innerText = "Sending...";
+        submitButton.disabled = true;
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    Accept: "application/json"
+                }
+            });
+
+            if (response.ok) {
+                form.reset();
+
+                formMessage.innerText =
+                    "Thank you! Your message has been sent successfully.";
+
+                formMessage.classList.remove("hidden");
+                setTimeout(() => {
+                    formMessage.classList.add("hidden");
+                }, 3000);
+
+            } else {
+                formMessage.innerText =
+                    "Something went wrong. Please try again.";
+
+                formMessage.classList.remove("hidden");
+            }
+
+        } catch (error) {
+            formMessage.innerText =
+                "Something went wrong. Please try again.";
+
+            formMessage.classList.remove("hidden");
+        }
+
+        submitButton.innerText = "Send enquiry";
+        submitButton.disabled = false;
+    });
+</script>
+
     </footer>
+
+
     
 </body>
 </html>
